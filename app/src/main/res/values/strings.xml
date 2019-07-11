@@ -2,4 +2,7 @@
     <string name="app_name">Large Transaction Demo</string>
     <string name="open_large_transaction_activity">Open Large Transaction Activity</string>
     <string name="open_livebridge_activity">Open LiveBridge Activity</string>
+    <string name="shared_preferences_size_label">Saved Shared Preferences Size</string>
+    <string name="add_state_frag">Add State Fragment</string>
+    <string name="not_applicable">Not Applicable</string>
 </resources>

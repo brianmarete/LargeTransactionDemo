@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".TransactionTooLargeActivity"></activity>
-        <activity android:name=".LiveBridgeActivity" />
+        <activity android:name=".BridgeActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

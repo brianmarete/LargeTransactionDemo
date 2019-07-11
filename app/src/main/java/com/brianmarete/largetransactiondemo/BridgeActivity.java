@@ -3,7 +3,7 @@ package com.brianmarete.largetransactiondemo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class LiveBridgeActivity extends AppCompatActivity {
+public class BridgeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

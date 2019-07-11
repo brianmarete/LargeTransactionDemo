@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
         liveBridgeButton = findViewById(R.id.live_bridge_button);
         liveBridgeButton.setOnClickListener(v ->
-                startActivity(new Intent(this, LiveBridgeActivity.class)));
+                startActivity(new Intent(this, BridgeActivity.class)));
 
         largeTransactionButton = findViewById(R.id.transaction_too_large_button);
         largeTransactionButton.setOnClickListener(v ->
