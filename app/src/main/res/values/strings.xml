@@ -5,4 +5,5 @@
     <string name="shared_preferences_size_label">Saved Shared Preferences Size</string>
     <string name="add_state_frag">Add State Fragment</string>
     <string name="not_applicable">Not Applicable</string>
+    <string name="num_of_elements">%d elements</string>
 </resources>
