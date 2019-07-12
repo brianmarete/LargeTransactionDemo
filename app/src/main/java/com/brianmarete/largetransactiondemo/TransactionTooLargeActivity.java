@@ -7,6 +7,10 @@ import android.widget.Button;
 public class TransactionTooLargeActivity extends AppCompatActivity {
     public static final String KEY = "KeyIndex";
 
+    /**
+     * This will be used to track how many times the button is clicked and
+     * also for the size of the integer array in the fragment.
+     */
     private int index = 0;
 
     Button addStateFragButton;
@@ -24,23 +28,19 @@ public class TransactionTooLargeActivity extends AppCompatActivity {
         addStateFragButton.setOnClickListener(v -> {
             index++;
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, TransactionTooLargeFragment.newInstance(index))
+                    .replace(R.id.fragment_bridge_container, TransactionTooLargeFragment.newInstance(index))
                     .addToBackStack(TransactionTooLargeFragment.TAG)
                     .commit();
         });
-
-    }
-
-    @Override
-    public void onBackPressed() {
-        index--;
-        super.onBackPressed();
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
+        /*
+         * Putting small primitive values in the bundle will not cause a TransactionTooLargeException
+         */
         if (outState != null) {
             outState.putInt(KEY, index);
         }

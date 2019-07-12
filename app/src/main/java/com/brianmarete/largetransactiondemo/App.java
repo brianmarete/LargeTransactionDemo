@@ -15,17 +15,21 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
+        /*
+         * This initializes the Bridge library when the application is started.
+         * Remember to add the name of our custom application class to the manifest.
+         */
         Bridge.initialize(this, new SavedStateHandler() {
             @Override
             public void saveInstanceState(@NonNull Object target,
                                           @NonNull Bundle state) {
-                Icepick.saveInstanceState(this, state);
+                Icepick.saveInstanceState(target, state);
             }
 
             @Override
             public void restoreInstanceState(@NonNull Object target,
                                              @Nullable Bundle state) {
-                Icepick.restoreInstanceState(this, state);
+                Icepick.restoreInstanceState(target, state);
             }
         });
     }

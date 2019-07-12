@@ -9,26 +9,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class TransactionTooLargeFragment extends Fragment {
+import com.livefront.bridge.Bridge;
 
-    public static final String TAG = "TransactionTooLargeFragment";
-    public static final String KEY_INDEX = "KeyIndex";
-    public static final String DATA = "KeyData";
+import icepick.State;
+
+public class BridgeFragment extends Fragment {
+
+    public static final String TAG = "BridgeFragment";
+    public static final String KEY = "KeyIndex";
 
     /**
-     * Integer array which we will store in the Bundle.
+     * State annotation tells the Icepick library to manage the saved state of the data array.
      */
-    private int[] data;
-    /**
-     * Size of the integer array.
-     */
+    @State
+    int[] data;
     private int size = 0;
 
-    static Fragment newInstance(int index) {
-        TransactionTooLargeFragment fragment = new TransactionTooLargeFragment();
+    public static Fragment newInstance(int index) {
+        BridgeFragment fragment = new BridgeFragment();
 
         Bundle args = new Bundle();
-        args.putInt(KEY_INDEX, index);
+        args.putInt(KEY, index);
 
         fragment.setArguments(args);
 
@@ -41,14 +42,14 @@ public class TransactionTooLargeFragment extends Fragment {
         Bundle args = this.getArguments();
 
         if (args != null) {
-            /*
-             * Multiply the index arg with a large number to make the data array large.
-             */
-            size = args.getInt(KEY_INDEX) * 100000;
+            size = args.getInt(KEY) * 100000;
         }
 
         if (savedInstanceState != null) {
-            data = (int[]) savedInstanceState.getSerializable(DATA);
+            /*
+             * We use Bridge to restore what was in the instance state
+             */
+            Bridge.restoreInstanceState(this, savedInstanceState);
         } else {
             data = new int[size];
         }
@@ -69,10 +70,10 @@ public class TransactionTooLargeFragment extends Fragment {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-
         /*
-         * The data integer array will be too large and will cause a TransactionTooLargeException
+         * Let Bridge manage the saving of the instance state, allowing us to store larger
+         * variables in the instance state
          */
-        outState.putSerializable(DATA, data);
+        Bridge.saveInstanceState(this, outState);
     }
 }
